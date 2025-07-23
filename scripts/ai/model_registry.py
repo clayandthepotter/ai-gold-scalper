@@ -550,54 +550,102 @@ class ModelRegistry:
         
         return summary
 
+import time
+import sys
+import argparse
+
+def run_service_mode(registry):
+    """Run model registry as a persistent service"""
+    print("[OK] Model Registry Service Started")
+    print("   Monitoring for model updates and performance tracking...")
+    
+    try:
+        while True:
+            # Service loop - the registry is available for other components to use
+            # In a real implementation, this would handle:
+            # - Performance metric updates from trading components
+            # - Model comparison requests
+            # - Health checks
+            
+            time.sleep(30)  # Check every 30 seconds
+            
+            # Periodic maintenance (could be expanded)
+            # For now, just ensure the registry is responsive
+            models = registry.list_models()
+            if len(models) > 0:
+                # Registry is working properly
+                pass
+                
+    except KeyboardInterrupt:
+        print("\n[OK] Model Registry Service stopped")
+    except Exception as e:
+        print(f"[ERROR] Error in model registry service: {e}")
+        sys.exit(1)
+
 # Testing and demonstration
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="AI Gold Scalper Model Registry")
+    parser.add_argument('--service', action='store_true', help='Run as a persistent service')
+    parser.add_argument('--demo', action='store_true', help='Run demo and exit')
+    
+    args = parser.parse_args()
+    
     # Initialize registry
     registry = ModelRegistry("models")
     
-    # Create sample model metadata
-    from sklearn.ensemble import RandomForestClassifier
-    from sklearn.datasets import make_classification
-    
-    # Generate sample data
-    X, y = make_classification(n_samples=1000, n_features=10, random_state=42)
-    
-    # Create and train sample model
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X, y)
-    
-    # Create metadata
-    metadata = ModelMetadata(
-        model_id="",  # Will be generated
-        name="Random Forest Gold Predictor",
-        version="1.0.0",
-        created_at=datetime.now(),
-        model_type="sklearn",
-        features_used=["price_change", "volume", "rsi", "macd", "bb_position"],
-        hyperparameters={"n_estimators": 100, "random_state": 42},
-        training_data_hash="abc123def456",
-        file_path="",  # Will be set by registry
-        accuracy=0.85,
-        win_rate=0.72,
-        profit_factor=1.45
-    )
-    
-    # Register model
-    model_id = registry.register_model(model, metadata)
-    
-    # Set as active
-    registry.set_active_model(model_id)
-    
-    # Load active model
-    active_model, active_metadata = registry.get_active_model()
-    
-    print(f"\n✅ Active model loaded: {active_metadata.name}")
-    print(f"   Accuracy: {active_metadata.accuracy:.2%}")
-    print(f"   Win Rate: {active_metadata.win_rate:.2%}")
-    
-    # Export summary
-    summary = registry.export_model_summary()
-    print(f"\n📊 Registry Summary:")
-    print(f"   Total Models: {summary['total_models']}")
-    print(f"   Active Models: {summary['active_models']}")
-    print(f"   Average Accuracy: {summary['performance_summary']['avg_accuracy']:.2%}")
+    if args.service:
+        # Service mode - keep running
+        run_service_mode(registry)
+    else:
+        # Demo mode or default behavior
+        # Create sample model metadata
+        from sklearn.ensemble import RandomForestClassifier
+        from sklearn.datasets import make_classification
+        
+        # Generate sample data
+        X, y = make_classification(n_samples=1000, n_features=10, random_state=42)
+        
+        # Create and train sample model
+        model = RandomForestClassifier(n_estimators=100, random_state=42)
+        model.fit(X, y)
+        
+        # Create metadata
+        metadata = ModelMetadata(
+            model_id="",  # Will be generated
+            name="Random Forest Gold Predictor",
+            version="1.0.0",
+            created_at=datetime.now(),
+            model_type="sklearn",
+            features_used=["price_change", "volume", "rsi", "macd", "bb_position"],
+            hyperparameters={"n_estimators": 100, "random_state": 42},
+            training_data_hash="abc123def456",
+            file_path="",  # Will be set by registry
+            accuracy=0.85,
+            win_rate=0.72,
+            profit_factor=1.45
+        )
+        
+        # Register model
+        model_id = registry.register_model(model, metadata)
+        
+        # Set as active
+        registry.set_active_model(model_id)
+        
+        # Load active model
+        active_model, active_metadata = registry.get_active_model()
+        
+        print(f"\n✅ Active model loaded: {active_metadata.name}")
+        print(f"   Accuracy: {active_metadata.accuracy:.2%}")
+        print(f"   Win Rate: {active_metadata.win_rate:.2%}")
+        
+        # Export summary
+        summary = registry.export_model_summary()
+        print(f"\n📊 Registry Summary:")
+        print(f"   Total Models: {summary['total_models']}")
+        print(f"   Active Models: {summary['active_models']}")
+        print(f"   Average Accuracy: {summary['performance_summary']['avg_accuracy']:.2%}")
+        
+        if not args.demo:
+            # If not explicitly demo mode, run as service
+            print("\n🔄 Switching to service mode...")
+            run_service_mode(registry)

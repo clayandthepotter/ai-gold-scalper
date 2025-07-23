@@ -817,7 +817,7 @@ def get_ai_signal():
         # 3. GPT-4 Signal (if configured)
         try:
             if CONFIG['use_gpt4']:
-                gpt4_signal = await calculate_gpt4_signal(market_data)
+                gpt4_signal = calculate_gpt4_signal(market_data)
                 logger.info("GPT-4 analysis completed")
         except Exception as e:
             logger.error(f"GPT-4 analysis error: {e}")
@@ -1086,4 +1086,11 @@ if __name__ == '__main__':
     logger.info(f"GPT-4 enabled: {CONFIG['use_gpt4']}")
     logger.info(f"Dev tunnel enabled: {CONFIG['dev_tunnel'].get('enabled', False)}")
     
-    app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
+    # Use Waitress WSGI server for production
+    try:
+        from waitress import serve
+        logger.info("Starting with Waitress WSGI server (Production Mode)")
+        serve(app, host='0.0.0.0', port=5000, threads=4)
+    except ImportError:
+        logger.warning("Waitress not available, falling back to Flask dev server")
+        app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)

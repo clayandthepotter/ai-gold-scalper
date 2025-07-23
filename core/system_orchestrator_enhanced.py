@@ -62,7 +62,7 @@ class EnhancedSystemOrchestrator:
         self.components = {
             # Core AI Infrastructure
             'ai_server': {
-                'script': 'enhanced_ai_server_consolidated.py',
+                'script': 'core/enhanced_ai_server_consolidated.py',
                 'port': 5000,
                 'health_endpoint': '/health',
                 'dependencies': ['model_registry'],
@@ -494,8 +494,15 @@ class EnhancedSystemOrchestrator:
         self.log_info(f"Starting component: {component_name}")
         
         try:
+            # Prepare command args based on component type
+            cmd_args = [sys.executable, str(script_path)]
+            
+            # Add service-specific arguments
+            if component_name == 'model_registry':
+                cmd_args.append('--service')
+            
             process = subprocess.Popen(
-                [sys.executable, str(script_path)],
+                cmd_args,
                 cwd=str(self.base_path),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -517,10 +524,10 @@ class EnhancedSystemOrchestrator:
             
             # Verify the process started successfully
             if process.poll() is None:
-                self.log_info(f"✅ {component_name} started successfully (PID: {process.pid})")
+                self.log_info(f"[OK] {component_name} started successfully (PID: {process.pid})")
                 return True
             else:
-                self.log_error(f"❌ {component_name} failed to start")
+                self.log_error(f"[ERROR] {component_name} failed to start")
                 del self.processes[component_name]
                 return False
                 
@@ -553,7 +560,7 @@ class EnhancedSystemOrchestrator:
                 process.wait()
             
             del self.processes[component_name]
-            self.log_info(f"✅ {component_name} stopped")
+            self.log_info(f"[OK] {component_name} stopped")
             return True
             
         except Exception as e:
