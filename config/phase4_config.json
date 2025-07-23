@@ -1,0 +1,23 @@
+{
+  "ensemble_enabled": true,
+  "auto_ensemble_creation": true,
+  "ensemble_retrain_frequency_hours": 48,
+  "min_base_models": 3,
+  "ensemble_confidence_threshold": 0.8,
+  "regime_detection_enabled": true,
+  "regime_lookback_periods": 100,
+  "use_regime_clustering": true,
+  "regime_clusters": 4,
+  "regime_change_threshold": 0.3,
+  "min_regime_duration_hours": 2.0,
+  "regime_based_model_selection": true,
+  "model_performance_weight": 0.6,
+  "regime_confidence_weight": 0.4,
+  "adaptive_ensemble_weights": true,
+  "market_microstructure_analysis": true,
+  "alternative_data_integration": false,
+  "real_time_feature_engineering": true,
+  "min_ensemble_accuracy": 0.7,
+  "min_regime_confidence": 0.5,
+  "model_selection_interval_minutes": 30
+}

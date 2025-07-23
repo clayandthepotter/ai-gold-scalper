@@ -1,0 +1,202 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-07-23T00:03:02.072055",
+    "analyzer_version": "1.0.0",
+    "analysis_type": "baseline_system_assessment"
+  },
+  "system_analysis": {
+    "server_code": {
+      "file_size_kb": 41.1064453125,
+      "total_lines": 1090,
+      "classes_identified": [
+        "PerformanceMonitor",
+        "SignalFusionEngine",
+        "ModelInferenceEngine",
+        "TechnicalAnalysisEngine",
+        "DevTunnelClient"
+      ],
+      "key_features": [
+        "Performance monitoring with P95/P99 metrics",
+        "Multi-signal fusion engine",
+        "ML model inference engine",
+        "GPT-4 market analysis",
+        "Advanced technical analysis",
+        "Dev tunnel for model updates"
+      ],
+      "performance_monitoring": true,
+      "signal_fusion": true,
+      "ml_integration": true,
+      "gpt4_integration": true,
+      "current_logging": [
+        "Request logging",
+        "Signal accuracy tracking",
+        "Model update logging"
+      ],
+      "status": "SUCCESS"
+    },
+    "configuration": {
+      "config_files_found": [
+        "config.json",
+        "shared/config/settings.json"
+      ],
+      "config_status": {
+        "config.json": {
+          "status": "VALID",
+          "keys": [
+            "server",
+            "ai",
+            "dev_tunnel",
+            "performance"
+          ],
+          "size_kb": 0.46484375
+        },
+        "shared/config/settings.json": {
+          "status": "VALID",
+          "keys": [
+            "openai_api_key",
+            "trading",
+            "api",
+            "data_sources",
+            "ml_models",
+            "risk_management",
+            "logging",
+            "database",
+            "performance"
+          ],
+          "size_kb": 2.591796875
+        }
+      },
+      "missing_configs": [
+        "OpenAI API Key",
+        "Trading Parameters",
+        "Risk Management Settings",
+        "Trading Parameters"
+      ]
+    },
+    "directory_structure": {
+      "root_files": [
+        "system_orchestrator.py",
+        "config.json",
+        "enhanced_ai_server_consolidated.py",
+        "APPLY_FOCUSED_STRUCTURE.py",
+        "README.md",
+        "requirements.txt",
+        ".gitignore",
+        "TRANSFORMATION_COMPLETE.md"
+      ],
+      "directories": {
+        "FINAL_BACKUP_20250722_233242": {
+          "file_count": 8,
+          "subdirectories": []
+        },
+        "vps_components": {
+          "file_count": 3,
+          "subdirectories": []
+        },
+        "shared": {
+          "file_count": 6,
+          "subdirectories": [
+            "config",
+            "models",
+            "data"
+          ]
+        },
+        "scripts": {
+          "file_count": 3,
+          "subdirectories": [
+            "analysis",
+            "testing",
+            "monitoring"
+          ]
+        }
+      },
+      "total_files": 28,
+      "organization_score": 100
+    },
+    "model_dependencies": {
+      "model_directories": [
+        "shared/models"
+      ],
+      "model_files": [
+        "shared/models\\rf_classifier.pkl",
+        "shared/models\\rf_classifier_scaler.pkl",
+        "shared/models\\best_model.pth"
+      ],
+      "required_packages": [
+        "numpy: AVAILABLE",
+        "pandas: AVAILABLE",
+        "scikit-learn: MISSING",
+        "joblib: AVAILABLE",
+        "torch: AVAILABLE",
+        "flask: AVAILABLE",
+        "openai: AVAILABLE",
+        "aiohttp: AVAILABLE"
+      ],
+      "missing_dependencies": [
+        "scikit-learn"
+      ]
+    },
+    "trading_logic": {
+      "signal_sources": [
+        "Technical Analysis",
+        "ML Models",
+        "GPT-4 Analysis"
+      ],
+      "risk_management": {
+        "features": [
+          "Dynamic lot sizing",
+          "Dynamic SL/TP calculation",
+          "Confidence-based filtering"
+        ],
+        "confidence_threshold_exists": true
+      },
+      "signal_fusion_capability": true,
+      "performance_tracking": true,
+      "current_limitations": []
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "MEDIUM",
+      "category": "Configuration",
+      "action": "Complete configuration setup",
+      "description": "Add missing configurations: OpenAI API Key, Trading Parameters, Risk Management Settings, Trading Parameters"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Dependencies",
+      "action": "Install missing ML dependencies",
+      "description": "Missing packages: scikit-learn"
+    }
+  ],
+  "baseline_metrics": {
+    "analysis_date": "2025-07-23T00:03:02.071378",
+    "system_version": "5.0.0-consolidated",
+    "code_complexity": {
+      "total_lines": 1090,
+      "classes_count": 5,
+      "file_size_kb": 41.1064453125
+    },
+    "feature_coverage": {
+      "signal_sources": 3,
+      "has_signal_fusion": true,
+      "has_performance_tracking": true
+    },
+    "organization_score": 100,
+    "total_files": 28,
+    "recommendations_count": 2
+  },
+  "summary": {
+    "overall_health": "GOOD (70/100)",
+    "critical_issues": [
+      "Install missing ML dependencies"
+    ],
+    "next_steps": [
+      "Review the analysis report and prioritize recommendations",
+      "Address critical issues first (HIGH priority items)",
+      "Implement enhanced logging system for better performance tracking",
+      "Set up baseline performance monitoring",
+      "Create testing framework for signal accuracy validation"
+    ]
+  }
+}

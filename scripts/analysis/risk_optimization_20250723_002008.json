@@ -1,0 +1,52 @@
+{
+  "original_parameters": {
+    "max_risk_per_trade": 0.5,
+    "confidence_threshold": 75.0,
+    "base_position_size": 0.01,
+    "confidence_multiplier": 1.5,
+    "stop_loss_atr_multiplier": 1.5,
+    "take_profit_atr_multiplier": 3.0,
+    "max_daily_risk": 2.0,
+    "max_consecutive_losses": 3,
+    "risk_reduction_factor": 0.5,
+    "volatility_adjustment": true,
+    "session_risk_adjustment": true
+  },
+  "optimized_parameters": {
+    "max_risk_per_trade": 0.5,
+    "confidence_threshold": 75.0,
+    "base_position_size": 0.01,
+    "confidence_multiplier": 1.5,
+    "stop_loss_atr_multiplier": 1.5,
+    "take_profit_atr_multiplier": 3.0,
+    "max_daily_risk": 2.0,
+    "max_consecutive_losses": 3,
+    "risk_reduction_factor": 0.5,
+    "volatility_adjustment": true,
+    "session_risk_adjustment": true
+  },
+  "backtesting_results": {
+    "total_trades": 2,
+    "accepted_trades": 2,
+    "win_rate": 100.0,
+    "total_pnl_pips": 60.0,
+    "max_drawdown_pips": 0,
+    "profit_factor": 0,
+    "avg_risk_per_trade": 0.005,
+    "parameter_compliance": {}
+  },
+  "improvement_metrics": {
+    "win_rate_change": 0.0,
+    "pnl_per_trade_change": -486.66666666666663,
+    "drawdown_change": 0.0,
+    "profit_factor_change": 0,
+    "trade_frequency_change": -33.333333333333336
+  },
+  "recommendations": [
+    "Reduce maximum risk per trade to 0.5% for better capital preservation",
+    "Implement maximum daily risk limit of 2.0%",
+    "Stop trading after 3 consecutive losses and reduce risk by 50%",
+    "Focus on improving profit factor through better signal quality and risk management"
+  ],
+  "confidence_score": 50.0
+}

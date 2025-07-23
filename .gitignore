@@ -1,0 +1,215 @@
+# ================================
+# AI Gold Scalper - Professional .gitignore
+# ================================
+
+# Python Runtime
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+env/
+venv/
+venv_*/
+ENV/
+env.bak/
+venv.bak/
+.env
+.venv
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+*.sublime-*
+
+# Operating System
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ================================
+# Trading System Specific
+# ================================
+
+# Logs & Runtime Data
+*.log
+logs/
+log_*/
+runtime_logs/
+system_logs/
+trade_logs/
+performance_logs/
+
+# Models & ML Artifacts (large files)
+*.pth
+*.pkl
+*.joblib
+*.h5
+*.model
+*.onnx
+models/trained/
+models/checkpoints/
+models/artifacts/
+
+# Market Data (large files)
+*.csv
+*.parquet
+*.json.gz
+*.hdf5
+*.feather
+data/raw/
+data/processed/
+data/market_data/
+historical_data/
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+db_backups/
+
+# Configuration & Secrets
+.env
+.env.local
+.env.production
+.env.staging
+settings.json
+config_prod.json
+api_keys.json
+secrets.json
+tokens.json
+*_secrets.*
+*_api_key.*
+
+# Trading Platform Files
+*.ex5
+*.ex4
+*.mq5
+*.mq4
+*.set
+MQL5/
+MQL4/
+Experts/Logs/
+Tester/
+
+# Backup & Temporary Directories
+*_BACKUP_*/
+*_backup_*/
+KEEP_*/
+DELETE_*/
+temp/
+tmp/
+*.tmp
+*.temp
+backup_*/
+old_*/
+archive_*/
+
+# Performance & Analytics Data
+reports/generated/
+performance_data/
+backtest_results/
+optimization_results/
+analytics_cache/
+
+# System Generated Files
+*.pid
+*.lock
+.coverage
+.pytest_cache/
+.mypy_cache/
+.tox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Documentation Build
+docs/_build/
+docs/build/
+site/
+
+# Package managers
+Pipfile.lock
+poetry.lock
+yarn.lock
+package-lock.json
+
+# ================================
+# Development & Testing
+# ================================
+
+# Test outputs
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# pyenv
+.python-version
+
+# ================================
+# Deployment & Production
+# ================================
+
+# Docker
+.dockerignore
+Dockerfile.local
+docker-compose.override.yml
+
+# Cloud deployment
+.terraform/
+*.tfstate
+*.tfstate.backup
+.tfvars
+
+# Monitoring & Metrics
+prometheus_data/
+grafana_data/
+metrics_cache/
+
+# ================================
+# Exclude Critical Directories
+# ================================
+
+# Never commit these directories
+venv*/
+**/node_modules/
+**/.terraform/
+**/venv*/
+**/__pycache__/

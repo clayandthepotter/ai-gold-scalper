@@ -1,0 +1,126 @@
+# ================================
+# AI Gold Scalper - Enterprise Requirements
+# Version: 6.0 (Production Ready)
+# ================================
+
+# Core Web Framework & API
+flask==2.3.2
+flask-cors==4.0.0
+flask-caching==2.0.2
+flask-login==0.6.2
+werkzeug==2.3.6
+requests==2.31.0
+aiohttp==3.8.5
+
+# AI & Machine Learning - Core
+numpy==1.24.3
+pandas==2.0.3
+scikit-learn==1.3.0
+joblib==1.3.1
+
+# AI & Machine Learning - Advanced
+xgboost==1.7.6
+catboost==1.2.2
+lightgbm==4.0.0
+torch==2.0.1
+tensorflow==2.13.0
+
+# GPT Integration
+openai==0.27.8
+tiktoken==0.4.0
+
+# Data Processing & Analysis
+scipy==1.11.1
+statsmodels==0.14.0
+numba==0.57.1
+ta-lib==0.4.26
+yfinance==0.2.18
+
+# Database & Storage
+sqlite3  # Built-in with Python
+sqlalchemy==2.0.19
+alembic==1.11.1
+
+# Visualization & Dashboard
+plotly==5.15.0
+dash==2.11.2
+seaborn==0.12.2
+matplotlib==3.7.2
+
+# System Monitoring & Logging
+psutil==5.9.5
+logging-config==1.0.3
+coloredlogs==15.0.1
+rich==13.4.2
+
+# Configuration & Environment
+python-dotenv==1.0.0
+click==8.1.6
+pyaml==23.7.0
+configparser==5.3.0
+
+# Security & Encryption
+cryptography==41.0.3
+hashlib  # Built-in with Python
+secrets  # Built-in with Python
+
+# Async & Concurrency
+asyncio  # Built-in with Python
+concurrent.futures  # Built-in with Python
+threading  # Built-in with Python
+
+# Network & Communication
+socket  # Built-in with Python
+http.server  # Built-in with Python
+urllib3==2.0.4
+
+# Date & Time
+datetime  # Built-in with Python
+time  # Built-in with Python
+pytz==2023.3
+dateutil==2.8.2
+
+# File & Path Operations
+os  # Built-in with Python
+sys  # Built-in with Python
+pathlib  # Built-in with Python
+shutil  # Built-in with Python
+glob  # Built-in with Python
+
+# Development & Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+black==23.7.0
+flake8==6.0.0
+mypy==1.5.1
+
+# Performance & Optimization
+memory-profiler==0.60.0
+line-profiler==4.1.1
+cProfile  # Built-in with Python
+
+# JSON & Data Formats
+json  # Built-in with Python
+csv  # Built-in with Python
+xml.etree.ElementTree  # Built-in with Python
+
+# Utilities
+tqdm==4.65.0
+tabulate==0.9.0
+colorama==0.4.6
+
+# ================================
+# Optional: Production Deployment
+# ================================
+# gunicorn==21.2.0  # For production WSGI server
+# nginx  # Reverse proxy (system package)
+# supervisor  # Process manager (system package)
+# docker  # Containerization (system package)
+
+# ================================
+# Development Notes
+# ================================
+# Install with: pip install -r requirements.txt
+# For development: pip install -r requirements.txt pytest black flake8
+# For production: Consider using pip-tools or poetry for lock files

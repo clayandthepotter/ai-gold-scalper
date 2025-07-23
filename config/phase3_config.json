@@ -1,0 +1,12 @@
+{
+  "adaptive_learning_enabled": true,
+  "auto_model_switching": true,
+  "min_trades_for_update": 50,
+  "retraining_frequency_hours": 24,
+  "performance_threshold": 0.6,
+  "model_evaluation_interval_minutes": 60,
+  "auto_cleanup_models": true,
+  "max_models_to_keep": 10,
+  "monitoring_integration": true,
+  "postmortem_integration": true
+}

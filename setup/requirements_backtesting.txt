@@ -1,0 +1,43 @@
+# AI Gold Scalper Backtesting System Requirements
+# Core data processing and analysis
+pandas>=1.5.0
+numpy>=1.24.0
+
+# Financial data and backtesting
+yfinance>=0.2.0
+
+# Plotting and visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Machine learning (if using real AI models)
+scikit-learn>=1.2.0
+
+# Statistical analysis
+scipy>=1.10.0
+
+# Database support
+sqlite3  # Built into Python 3.x
+
+# Async support
+asyncio  # Built into Python 3.x
+
+# Date/time handling
+python-dateutil>=2.8.0
+
+# JSON handling
+# json - Built into Python
+
+# Logging
+# logging - Built into Python
+
+# Path handling
+pathlib  # Built into Python 3.x
+
+# Type hints
+typing_extensions>=4.0.0
+
+# Optional: Advanced features
+# quantlib-python>=1.29  # For advanced financial calculations
+# ta-lib>=0.4.0          # For technical analysis indicators
+# plotly>=5.0.0          # For interactive charts

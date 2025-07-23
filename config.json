@@ -1,0 +1,25 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "version": "5.0.0-consolidated"
+  },
+  "ai": {
+    "signal_fusion": {
+      "ml_weight": 0.4,
+      "technical_weight": 0.4,
+      "gpt4_weight": 0.2
+    }
+  },
+  "dev_tunnel": {
+    "enabled": false,
+    "url": "http://localhost:8001",
+    "auth_key": "",
+    "check_interval": 300
+  },
+  "performance": {
+    "cache_timeout": 60,
+    "max_workers": 4,
+    "connection_pool_limit": 50
+  }
+}
