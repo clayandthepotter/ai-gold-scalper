@@ -240,6 +240,19 @@ except ImportError:
 | **Waitress WSGI** | **~500-1000** | **4** | **✅ Yes** |
 | Gunicorn (Linux) | ~800-1500 | Variable | ✅ Yes |
 
+**🧪 Deployment Verification:**
+```bash
+# Verify WSGI deployment is working correctly
+python utils/verify_wsgi_deployment.py
+
+# Expected output: All tests passed (100% success rate)
+# - Dependencies check
+# - Server configuration validation
+# - Live endpoint testing
+# - Performance analysis
+# - AI signal functionality test
+```
+
 ---
 
 ## 🛡️ **Risk Disclaimer**
