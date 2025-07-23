@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.1.0] - 2025-07-23 - **Enhanced User Experience** ✨
+
+### 🆕 **Added**
+- **Interactive Setup Wizard**: Comprehensive guided configuration system
+  - Automated OpenAI API key prompt and secure storage
+  - Deployment type selection (Development/Production)
+  - Interactive trading parameter configuration (ML, Technical, GPT-4 weights)
+  - Server and performance settings optimization
+  - Input validation and error handling
+- **Enhanced User Experience**: Streamlined first-time setup process eliminates manual config editing
+- **Security Improvements**: Masked API key display and secure configuration storage
+- **Production Optimizations**: Automatic performance tuning based on deployment type
+
+### 🔧 **Changed**
+- Updated README.md with comprehensive interactive setup documentation
+- Enhanced system orchestrator with user-friendly configuration management
+- Improved deployment workflow for new users and developers
+- Updated setup instructions with guided wizard option
+
+### 🐛 **Fixed**
+- Configuration initialization order for OpenAI API key checking
+- Enhanced error handling during setup process
+- Improved validation for trading parameter weights
+
+---
+
 ## [6.0.0] - 2025-07-23 - **PRODUCTION READY** 🚀
 
 ### 🎯 **Major Release - Enterprise Grade System**

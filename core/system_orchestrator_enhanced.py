@@ -55,6 +55,8 @@ class EnhancedSystemOrchestrator:
             self.interactive_setup()
         else:
             self.load_configuration()
+            # Check for missing OpenAI API key after loading config
+            self.check_openai_api_key()
         
         # Enhanced component configurations with full Phase 4 integration
         self.components = {
@@ -245,6 +247,163 @@ class EnhancedSystemOrchestrator:
             except Exception as e:
                 self.log_error(f"Error loading configuration: {e}")
                 self.config = {}
+
+    def check_openai_api_key(self):
+        """Prompt for OpenAI API key if missing"""
+        if not self.config.get('ai', {}).get('api_key'):
+            print("\n🔑 OpenAI API Key Required")
+            print("Your OpenAI API key is needed for GPT-4 trading analysis.")
+            api_key = input("Please enter your OpenAI API Key: ").strip()
+            if api_key:
+                self.config.setdefault('ai', {})['api_key'] = api_key
+                self.save_configuration()
+                print("✅ API key saved successfully!")
+            else:
+                print("⚠️  No API key provided. GPT-4 features will be disabled.")
+
+    def interactive_setup(self):
+        """Interactive setup wizard for first-time users"""
+        print("\n" + "="*70)
+        print("🚀 AI GOLD SCALPER - INTERACTIVE SETUP WIZARD")
+        print("="*70)
+        print("Welcome! This wizard will help you configure your trading system.")
+        
+        # Load existing config or create new one
+        self.load_configuration()
+        
+        # 1. Deployment Type
+        print("\n📋 Step 1: Deployment Configuration")
+        print("Choose your deployment type:")
+        print("  1. Development (Local testing, verbose logging)")
+        print("  2. Production (VPS deployment, optimized performance)")
+        
+        while True:
+            choice = input("Select deployment type (1/2): ").strip()
+            if choice == '1':
+                self.deployment_type = 'development'
+                self.config['deployment_type'] = 'development'
+                break
+            elif choice == '2':
+                self.deployment_type = 'production'
+                self.config['deployment_type'] = 'production'
+                break
+            else:
+                print("Please enter 1 or 2")
+        
+        print(f"✅ Deployment type set to: {self.deployment_type}")
+        
+        # 2. OpenAI API Key
+        print("\n🔑 Step 2: AI Configuration")
+        print("Your OpenAI API key enables GPT-4 trading analysis.")
+        print("Without it, the system will use technical analysis only.")
+        
+        current_key = self.config.get('ai', {}).get('api_key', '')
+        if current_key:
+            masked_key = current_key[:8] + '...' + current_key[-4:] if len(current_key) > 12 else '***'
+            print(f"Current API key: {masked_key}")
+            update_key = input("Update API key? (y/N): ").strip().lower()
+            if update_key in ['y', 'yes']:
+                api_key = input("Enter new OpenAI API Key: ").strip()
+                if api_key:
+                    self.config.setdefault('ai', {})['api_key'] = api_key
+                    print("✅ API key updated!")
+        else:
+            api_key = input("Enter OpenAI API Key (or press Enter to skip): ").strip()
+            if api_key:
+                self.config.setdefault('ai', {})['api_key'] = api_key
+                print("✅ API key saved!")
+            else:
+                print("⚠️  Skipping API key. GPT-4 features will be disabled.")
+        
+        # 3. Trading Parameters
+        print("\n📊 Step 3: Trading Configuration")
+        print("Configure AI signal weights (must sum to 1.0):")
+        
+        # Load current weights or use defaults
+        current_weights = self.config.get('ai', {}).get('signal_fusion', {
+            'ml_weight': 0.4,
+            'technical_weight': 0.4,
+            'gpt4_weight': 0.2
+        })
+        
+        print(f"Current weights:")
+        print(f"  ML Models: {current_weights['ml_weight']}")
+        print(f"  Technical Analysis: {current_weights['technical_weight']}")
+        print(f"  GPT-4 Analysis: {current_weights['gpt4_weight']}")
+        
+        update_weights = input("Update signal weights? (y/N): ").strip().lower()
+        if update_weights in ['y', 'yes']:
+            while True:
+                try:
+                    ml_weight = float(input(f"ML Models weight [0.0-1.0] (current: {current_weights['ml_weight']}): ") or current_weights['ml_weight'])
+                    tech_weight = float(input(f"Technical Analysis weight [0.0-1.0] (current: {current_weights['technical_weight']}): ") or current_weights['technical_weight'])
+                    gpt4_weight = float(input(f"GPT-4 Analysis weight [0.0-1.0] (current: {current_weights['gpt4_weight']}): ") or current_weights['gpt4_weight'])
+                    
+                    if abs(ml_weight + tech_weight + gpt4_weight - 1.0) < 0.01:  # Allow small rounding errors
+                        self.config.setdefault('ai', {})['signal_fusion'] = {
+                            'ml_weight': ml_weight,
+                            'technical_weight': tech_weight,
+                            'gpt4_weight': gpt4_weight
+                        }
+                        print("✅ Signal weights updated!")
+                        break
+                    else:
+                        print("❌ Weights must sum to 1.0. Please try again.")
+                except ValueError:
+                    print("❌ Please enter valid decimal numbers.")
+        
+        # 4. Server Configuration
+        print("\n🌐 Step 4: Server Configuration")
+        server_config = self.config.setdefault('server', {
+            'host': '0.0.0.0',
+            'port': 5000,
+            'version': '6.0.0-enhanced'
+        })
+        
+        print(f"AI Server will run on: http://{server_config['host']}:{server_config['port']}")
+        print(f"Dashboard will run on: http://localhost:8080")
+        
+        change_ports = input("Change default ports? (y/N): ").strip().lower()
+        if change_ports in ['y', 'yes']:
+            try:
+                new_port = int(input(f"AI Server port (current: {server_config['port']}): ") or server_config['port'])
+                server_config['port'] = new_port
+                print(f"✅ AI Server port set to: {new_port}")
+            except ValueError:
+                print("❌ Invalid port number, keeping current setting.")
+        
+        # 5. Performance Settings
+        print("\n⚡ Step 5: Performance Optimization")
+        perf_config = self.config.setdefault('performance', {
+            'cache_timeout': 60,
+            'max_workers': 4,
+            'connection_pool_limit': 50
+        })
+        
+        if self.deployment_type == 'production':
+            print("Production mode detected - applying optimized settings:")
+            perf_config.update({
+                'cache_timeout': 300,  # 5 minutes
+                'max_workers': 8,
+                'connection_pool_limit': 100
+            })
+            print("✅ Production optimizations applied!")
+        else:
+            print("Development mode - using standard settings for debugging.")
+        
+        # Save configuration
+        self.save_configuration()
+        
+        print("\n" + "="*70)
+        print("🎉 SETUP COMPLETE!")
+        print("="*70)
+        print("Configuration Summary:")
+        print(f"  • Deployment: {self.deployment_type}")
+        print(f"  • AI Server: http://localhost:{server_config['port']}")
+        print(f"  • Dashboard: http://localhost:8080")
+        print(f"  • GPT-4 Enabled: {'Yes' if self.config.get('ai', {}).get('api_key') else 'No'}")
+        print(f"  • Signal Weights: ML({self.config['ai']['signal_fusion']['ml_weight']}) | Tech({self.config['ai']['signal_fusion']['technical_weight']}) | GPT4({self.config['ai']['signal_fusion']['gpt4_weight']})")
+        print("\nYour AI Gold Scalper system is ready to launch!")
     
     def save_configuration(self):
         """Save current configuration"""

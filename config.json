@@ -9,7 +9,8 @@
       "ml_weight": 0.4,
       "technical_weight": 0.4,
       "gpt4_weight": 0.2
-    }
+    },
+    "api_key": "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"
   },
   "dev_tunnel": {
     "enabled": false,
@@ -21,5 +22,6 @@
     "cache_timeout": 60,
     "max_workers": 4,
     "connection_pool_limit": 50
-  }
+  },
+  "deployment_type": "development"
 }

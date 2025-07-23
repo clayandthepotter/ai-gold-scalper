@@ -86,10 +86,14 @@ AI Gold Scalper is an enterprise-grade, fully automated trading system that comb
    # - Python 3.8+
    # - Minimum 8GB RAM
    # - Stable internet connection
+   # - OpenAI API Key (for GPT-4 analysis)
    ```
 
 2. **⚡ Quick Launch**
    ```bash
+   # 🆕 Interactive Setup (Recommended for first-time users)
+   python core\system_orchestrator_enhanced.py interactive-setup
+   
    # Windows Quick Start
    .\setup\start_dashboard.bat
    
@@ -118,6 +122,38 @@ AI Gold Scalper is an enterprise-grade, fully automated trading system that comb
    # Analyze current system performance
    python scripts\analysis\current_system_analyzer.py
    ```
+
+---
+
+## 🆕 **Interactive Setup Wizard**
+
+The system now includes a comprehensive interactive setup wizard that guides you through the initial configuration process. This feature eliminates the need for manual configuration file editing and ensures optimal system setup.
+
+### ✨ **Setup Features**
+
+**🔧 Automated Configuration**
+- **OpenAI API Key**: Secure prompt and storage of your GPT-4 API key
+- **Deployment Type**: Automatic optimization for Development or Production environments
+- **Trading Parameters**: Interactive configuration of AI signal weights and risk settings
+- **Server Settings**: Network and performance parameter optimization
+
+**🎯 **Setup Process**
+```bash
+# Launch the interactive setup wizard
+python core\system_orchestrator_enhanced.py interactive-setup
+```
+
+The wizard will guide you through:
+1. **Deployment Selection** - Choose between Development or Production mode
+2. **API Key Configuration** - Securely enter and store your OpenAI API key
+3. **Signal Weight Optimization** - Balance ML, Technical, and GPT-4 analysis weights
+4. **Server Configuration** - Set ports and performance parameters
+5. **Final Validation** - Review and confirm all settings
+
+**🔒 **Security Features**
+- API keys are securely stored in encrypted configuration files
+- Sensitive information is masked during display
+- Configuration validation prevents invalid settings
 
 ---
 
