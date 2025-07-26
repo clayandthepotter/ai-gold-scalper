@@ -19,9 +19,9 @@
     "check_interval": 300
   },
   "performance": {
-    "cache_timeout": 60,
-    "max_workers": 4,
-    "connection_pool_limit": 50
+    "cache_timeout": 300,
+    "max_workers": 8,
+    "connection_pool_limit": 100
   },
   "deployment_type": "development"
 }

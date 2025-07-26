@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-AI Gold Scalper - Consolidated Production Server
-Combines the best features from all 7 server implementations
+AI Gold Scalper - Production Server
 
-Version: 5.0.0-consolidated
+Version: 5.0.0
 Features:
 - Production Performance Monitoring with P95/P99 metrics
 - Dev Tunnel Integration for secure model updates

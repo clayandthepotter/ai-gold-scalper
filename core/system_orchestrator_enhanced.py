@@ -82,7 +82,7 @@ class EnhancedSystemOrchestrator:
                 'startup_delay': 5
             },
             
-            # Phase 4 AI System Components
+            # AI System Components
             'model_registry': {
                 'script': 'scripts/ai/model_registry.py',
                 'type': 'persistent_service',
@@ -181,7 +181,7 @@ class EnhancedSystemOrchestrator:
                 'health_check': 'integration_ready'
             },
             
-            # Data & Model Management (To be created)
+            # Data & Model Management
             'data_processor': {
                 'script': 'scripts/data/market_data_processor.py',
                 'type': 'scheduled_service',
@@ -190,8 +190,7 @@ class EnhancedSystemOrchestrator:
                 'critical': False,
                 'restart_policy': 'on_failure',
                 'startup_delay': 0,
-                'health_check': 'data_pipeline_active',
-                'optional': True  # Component doesn't exist yet
+                'health_check': 'data_pipeline_active'
             },
             'model_trainer': {
                 'script': 'scripts/training/automated_model_trainer.py',
@@ -200,8 +199,48 @@ class EnhancedSystemOrchestrator:
                 'critical': False,
                 'restart_policy': 'manual',
                 'startup_delay': 0,
-                'health_check': 'trainer_ready',
-                'optional': True  # Component doesn't exist yet
+                'health_check': 'trainer_ready'
+            },
+            
+            # Research & Development Tools
+            'strategy_generator': {
+                'script': 'scripts/research/strategy_generator.py',
+                'type': 'on_demand_service',
+                'dependencies': ['data_processor'],
+                'critical': False,
+                'restart_policy': 'manual',
+                'startup_delay': 0,
+                'health_check': 'generator_ready'
+            },
+            'advanced_backtester': {
+                'script': 'scripts/research/advanced_backtester.py',
+                'type': 'on_demand_service',
+                'dependencies': ['strategy_generator'],
+                'critical': False,
+                'restart_policy': 'manual',
+                'startup_delay': 0,
+                'health_check': 'backtester_ready'
+            },
+            
+            # Integration & Monitoring
+            'server_integration_layer': {
+                'script': 'scripts/monitoring/server_integration_layer.py',
+                'type': 'continuous_service',
+                'dependencies': ['ai_server', 'enhanced_trade_logger'],
+                'critical': False,
+                'restart_policy': 'on_failure',
+                'startup_delay': 5,
+                'health_check': 'integration_active'
+            },
+            'system_analyzer': {
+                'script': 'scripts/analysis/current_system_analyzer.py',
+                'type': 'periodic_service',
+                'schedule': 'daily',
+                'dependencies': [],
+                'critical': False,
+                'restart_policy': 'manual',
+                'startup_delay': 0,
+                'health_check': 'analyzer_ready'
             }
         }
         
@@ -244,6 +283,10 @@ class EnhancedSystemOrchestrator:
                     self.config = json.load(f)
                 self.deployment_type = self.config.get('deployment_type', 'development')
                 self.installation_path = self.config.get('installation_path', str(self.base_path))
+                
+                # Load selected components if available
+                if 'selected_components' in self.config:
+                    self.selected_components = set(self.config['selected_components'])
             except Exception as e:
                 self.log_error(f"Error loading configuration: {e}")
                 self.config = {}
@@ -372,8 +415,96 @@ class EnhancedSystemOrchestrator:
             except ValueError:
                 print("❌ Invalid port number, keeping current setting.")
         
-        # 5. Performance Settings
-        print("\n⚡ Step 5: Performance Optimization")
+        # 5. Component Selection
+        print("\n🔧 Step 5: Component Selection")
+        
+        # Show core components info
+        core_components = self.get_core_components()
+        vps_components = self.get_vps_components()
+        additional_components = self.get_additional_components()
+        
+        print("\n📋 COMPONENT CATEGORIES:")
+        print("\n🔴 CORE COMPONENTS (Required for basic operation):")
+        for comp in sorted(core_components):
+            comp_desc = {
+                'ai_server': 'Core AI server for signal generation',
+                'model_registry': 'Model management and storage',
+                'enhanced_trade_logger': 'Trade logging and tracking'
+            }.get(comp, 'Component description')
+            print(f"   • {comp}: {comp_desc}")
+        
+        print("\n🟡 VPS COMPONENTS (Production essentials):")
+        vps_only = vps_components - core_components
+        for comp in sorted(vps_only):
+            comp_desc = {
+                'regime_detector': 'Market regime detection',
+                'data_processor': 'Market data processing'
+            }.get(comp, 'Component description')
+            print(f"   • {comp}: {comp_desc}")
+        
+        if self.deployment_type == 'development':
+            print("\n🟢 ADDITIONAL COMPONENTS (Local development features):")
+            for comp in sorted(additional_components):
+                comp_desc = {
+                    'performance_dashboard': 'Web dashboard for monitoring',
+                    'ensemble_system': 'Advanced ML ensemble models',
+                    'phase4_controller': 'Phase 4 AI integration',
+                    'adaptive_learning': 'Machine learning model training',
+                    'risk_optimizer': 'Risk parameter optimization',
+                    'postmortem_analyzer': 'AI-powered trade analysis',
+                    'backtesting_system': 'Comprehensive backtesting',
+                    'backtesting_integration': 'Backtest integration',
+                    'model_trainer': 'Model training (GPU intensive)',
+                    'strategy_generator': 'Research: Strategy generation',
+                    'advanced_backtester': 'Research: Advanced backtesting',
+                    'server_integration_layer': 'Server integration layer',
+                    'system_analyzer': 'System analysis and monitoring'
+                }.get(comp, 'Component description')
+                print(f"   • {comp}: {comp_desc}")
+        
+        # Component selection
+        print("\n🎯 SELECT COMPONENTS TO RUN:")
+        if self.deployment_type == 'production':
+            print("1. VPS Standard (Core + VPS essentials - recommended)")
+            print("2. Custom selection")
+        else:
+            print("1. VPS Support (Core + VPS essentials)")
+            print("2. Full Development Suite (VPS + all additional components - recommended)")
+            print("3. Custom selection")
+        
+        while True:
+            if self.deployment_type == 'production':
+                choice = input("Select component set (1/2): ").strip()
+                if choice == '1':
+                    self.selected_components = vps_components
+                    print("✅ Selected VPS Standard components")
+                    break
+                elif choice == '2':
+                    self.selected_components = self._custom_component_selection()
+                    break
+                else:
+                    print("Please enter 1 or 2")
+            else:  # development
+                choice = input("Select component set (1/2/3): ").strip()
+                if choice == '1':
+                    self.selected_components = vps_components
+                    print("✅ Selected VPS Support components")
+                    break
+                elif choice == '2':
+                    self.selected_components = vps_components | additional_components
+                    print("✅ Selected Full Development Suite")
+                    break
+                elif choice == '3':
+                    self.selected_components = self._custom_component_selection()
+                    break
+                else:
+                    print("Please enter 1, 2, or 3")
+        
+        # Save selected components
+        self.config['selected_components'] = list(self.selected_components)
+        
+        # 6. Performance Settings
+        print("\n⚡ Step 6: Performance Optimization")
         perf_config = self.config.setdefault('performance', {
             'cache_timeout': 60,
             'max_workers': 4,
@@ -405,6 +536,99 @@ class EnhancedSystemOrchestrator:
         print(f"  • Signal Weights: ML({self.config['ai']['signal_fusion']['ml_weight']}) | Tech({self.config['ai']['signal_fusion']['technical_weight']}) | GPT4({self.config['ai']['signal_fusion']['gpt4_weight']})")
         print("\nYour AI Gold Scalper system is ready to launch!")
     
+    def _custom_component_selection(self) -> set:
+        """Allow user to select custom components"""
+        print("\n🔧 CUSTOM COMPONENT SELECTION")
+        print("Select components to include in your configuration:")
+        
+        all_components = set(self.components.keys())
+        core_components = self.get_core_components()
+        selected = set()
+        
+        # Core components are mandatory
+        selected.update(core_components)
+        print(f"\n🔴 CORE COMPONENTS (automatically included):")
+        for comp in sorted(core_components):
+            print(f"   ✅ {comp}")
+        
+        # Optional components
+        optional_components = all_components - core_components
+        print(f"\n🟡 OPTIONAL COMPONENTS (select which to include):")
+        
+        component_list = sorted(optional_components)
+        for i, comp in enumerate(component_list, 1):
+            comp_desc = {
+                'performance_dashboard': 'Web dashboard for monitoring',
+                'ensemble_system': 'Advanced ML ensemble models', 
+                'regime_detector': 'Market regime detection',
+                'phase4_controller': 'Phase 4 AI integration',
+                'adaptive_learning': 'Machine learning model training',
+                'risk_optimizer': 'Risk parameter optimization',
+                'postmortem_analyzer': 'AI-powered trade analysis',
+                'backtesting_system': 'Comprehensive backtesting',
+                'backtesting_integration': 'Backtest integration',
+                'data_processor': 'Market data processing',
+                'model_trainer': 'Model training (GPU intensive)',
+                'strategy_generator': 'Research: Strategy generation',
+                'advanced_backtester': 'Research: Advanced backtesting',
+                'server_integration_layer': 'Server integration layer',
+                'system_analyzer': 'System analysis and monitoring'
+            }.get(comp, 'Component description')
+            print(f"   {i:2d}. {comp}: {comp_desc}")
+        
+        print("\n📝 Enter component numbers to include (e.g., 1,3,5 or 1-5,8):")
+        print("   - Use commas to separate individual numbers")
+        print("   - Use dashes for ranges (e.g., 1-3 means 1, 2, 3)")
+        print("   - Enter 'all' to select all optional components")
+        print("   - Press Enter to finish")
+        
+        while True:
+            user_input = input("Components to include: ").strip().lower()
+            
+            if not user_input:
+                break
+            
+            if user_input == 'all':
+                selected.update(optional_components)
+                print("✅ All optional components selected")
+                break
+            
+            try:
+                # Parse user input
+                selections = []
+                for part in user_input.split(','):
+                    part = part.strip()
+                    if '-' in part:
+                        # Handle ranges
+                        start, end = map(int, part.split('-'))
+                        selections.extend(range(start, end + 1))
+                    else:
+                        # Handle individual numbers
+                        selections.append(int(part))
+                
+                # Validate and add components
+                for num in selections:
+                    if 1 <= num <= len(component_list):
+                        comp_name = component_list[num - 1]
+                        selected.add(comp_name)
+                        print(f"   ✅ Added: {comp_name}")
+                    else:
+                        print(f"   ❌ Invalid number: {num}")
+                
+                break
+                
+            except ValueError:
+                print("❌ Invalid format. Please use numbers, commas, and dashes only.")
+                print("   Examples: 1,3,5 or 1-5,8 or all")
+        
+        print(f"\n✅ Custom selection complete: {len(selected)} components selected")
+        print("Selected components:")
+        for comp in sorted(selected):
+            indicator = "[CORE]" if comp in core_components else "[OPT]"
+            print(f"   • {comp} {indicator}")
+        
+        return selected
+    
     def save_configuration(self):
         """Save current configuration"""
         try:
@@ -430,10 +654,62 @@ class EnhancedSystemOrchestrator:
         
         return True
     
+    def get_core_components(self) -> set:
+        """Get absolute core components required for basic system operation"""
+        return {
+            'ai_server',            # Core AI server - CRITICAL for signal generation
+            'model_registry',       # Model management - CRITICAL for AI operations
+            'enhanced_trade_logger' # Trade logging - CRITICAL for tracking
+        }
+    
+    def get_vps_components(self) -> set:
+        """Get VPS production components (includes core + VPS essentials)"""
+        return {
+            'ai_server',            # Core AI server for signal generation
+            'model_registry',       # Model management
+            'enhanced_trade_logger', # Trade logging for analysis
+            'regime_detector',      # Market regime detection
+            'data_processor'        # Market data processing
+        }
+    
+    def get_additional_components(self) -> set:
+        """Get additional components for local development (beyond VPS)"""
+        return {
+            'performance_dashboard', # Web dashboard for monitoring
+            'ensemble_system',      # Heavy ML ensemble models
+            'phase4_controller',    # Phase 4 AI integration
+            'adaptive_learning',    # ML model training
+            'risk_optimizer',       # Risk optimization
+            'postmortem_analyzer',  # AI-powered analysis
+            'backtesting_system',   # Backtesting (compute intensive)
+            'backtesting_integration', # Backtest integration
+            'model_trainer',        # Model training (GPU intensive)
+            'strategy_generator',   # Research: Strategy generation
+            'advanced_backtester',  # Research: Advanced backtesting
+            'server_integration_layer', # Integration layer
+            'system_analyzer'       # System analysis
+        }
+    
+    def get_deployment_components(self) -> set:
+        """Get components that should run based on deployment type and user selection"""
+        if hasattr(self, 'selected_components') and self.selected_components:
+            return self.selected_components
+        
+        if self.deployment_type == 'production':  # VPS deployment
+            return self.get_vps_components()
+        else:  # development/local deployment - VPS + additional components
+            return self.get_vps_components() | self.get_additional_components()
+    
     def get_startup_order(self) -> List[str]:
         """Get components in dependency order for startup"""
         ordered = []
-        remaining = set(self.components.keys())
+        
+        # Filter components based on deployment type
+        deployment_components = self.get_deployment_components()
+        remaining = set(comp for comp in self.components.keys() if comp in deployment_components)
+        
+        self.log_info(f"Deployment type: {self.deployment_type}")
+        self.log_info(f"Selected components: {sorted(remaining)}")
         
         # Remove optional components that don't exist
         for comp_name in list(remaining):
@@ -740,6 +1016,17 @@ class EnhancedSystemOrchestrator:
         startup_order = self.get_startup_order()
         
         self.log_info(f"Startup order: {startup_order}")
+        
+        # Display deployment-specific information
+        if self.deployment_type == 'production':
+            print(f"\n🌐 VPS PRODUCTION DEPLOYMENT")
+            print(f"   Selected for lightweight, production-critical components")
+            print(f"   Components: AI Server, Model Registry, Trade Logger, Regime Detector, Data Processor")
+        else:
+            print(f"\n💻 LOCAL DEVELOPMENT DEPLOYMENT")
+            print(f"   Selected for AI-intensive, compute-heavy components")
+            print(f"   Full AI suite with dashboard, ensemble models, backtesting, and training")
+        
         print(f"\n📋 Startup sequence: {len(startup_order)} components")
         
         failed_components = []
