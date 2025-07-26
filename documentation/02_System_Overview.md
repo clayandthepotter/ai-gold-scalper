@@ -131,8 +131,20 @@ graph TD
     N --> O[Adaptive Learning]
     O --> D
 ```
-**Market Data (From MT5)** ↓
-**[Market Data Processor](scripts/data/market_data_processor.py)** ↓
+- A.) **MT5 (Market Data)** → B.) **Market Data Processor** ↓
+    - → C.) **Feature Engineering** → D.) **ML Models** ↓ 
+    - → C.) **Feature Engineering** → E.) **Technical Analysis** ↓
+    - → C.) **Feature Engineering** → F.) **Market Data Processor** ↓
+- G.) **Signal Fusion** ↓
+- H.) **Risk Management** ↓
+- I.) **Position Sizing** ↓
+- J.) **Trading Signal** ↓
+- K.) **MT5 EA** ↓
+- L.) **Trade Execution** ↓
+- M.) **Trade Logger** ↓
+- N.) **Performance Analysis** ↓
+- O.) **Adaptive Learning** ↓
+- O.) **Risk Management** → D.) **ML Models** → G.) **Signal Fusion**
 
 ## 🎯 Key Features
 
