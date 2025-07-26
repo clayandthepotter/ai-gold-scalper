@@ -1,6 +1,7 @@
 # ================================
 # AI Gold Scalper - Enterprise Requirements
-# Version: 6.0 (Production Ready)
+# Version: 6.1.1 (Production Ready)
+# Last Updated: 2025-07-26
 # ================================
 
 # Core Web Framework & API
@@ -8,9 +9,11 @@ flask==2.3.2
 flask-cors==4.0.0
 flask-caching==2.0.2
 flask-login==0.6.2
+flask-socketio==5.3.4
 werkzeug==2.3.6
 requests==2.31.0
 aiohttp==3.8.5
+waitress==2.1.2
 
 # AI & Machine Learning - Core
 numpy==1.24.3
@@ -24,6 +27,7 @@ catboost==1.2.2
 lightgbm==4.0.0
 torch==2.0.1
 tensorflow==2.13.0
+optuna==3.2.0
 
 # GPT Integration
 openai==0.27.8
@@ -73,6 +77,7 @@ threading  # Built-in with Python
 socket  # Built-in with Python
 http.server  # Built-in with Python
 urllib3==2.0.4
+websocket-client==1.6.1
 
 # Date & Time
 datetime  # Built-in with Python
@@ -109,6 +114,7 @@ xml.etree.ElementTree  # Built-in with Python
 tqdm==4.65.0
 tabulate==0.9.0
 colorama==0.4.6
+schedule==1.2.0
 
 # ================================
 # Optional: Production Deployment
