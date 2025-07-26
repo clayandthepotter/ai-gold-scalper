@@ -132,7 +132,7 @@ graph TD
     O --> D
 ```
 **Market Data (From MT5)** ↓
-**[Market Data Processor](scripts/data.market_data_processor.py)** ↓
+**[Market Data Processor](scripts/data/market_data_processor.py)** ↓
 
 ## 🎯 Key Features
 
