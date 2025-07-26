@@ -143,8 +143,7 @@ graph TD
 - L.) **Trade Execution** ↓
 - M.) **Trade Logger** ↓
 - N.) **Performance Analysis** ↓
-- O.) **Adaptive Learning** ↓
-- O.) **Risk Management** → D.) **ML Models** → G.) **Signal Fusion**
+- O.) **Adaptive Learning** → D.) **ML Models** → G.) **Signal Fusion**
 
 ## 🎯 Key Features
 
