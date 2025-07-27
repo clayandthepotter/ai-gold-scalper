@@ -15,55 +15,30 @@ This comprehensive documentation library provides everything you need to underst
 - **[Installation Guide](03_Installation_Guide.md)** - Complete installation instructions
 
 ### 🏗️ Core Architecture
-- **[System Architecture](04_System_Architecture.md)** - Detailed architectural overview
-- **[Component Reference](05_Component_Reference.md)** - All components explained
+- **[System Architecture](04_System_Architecture.md)** - ✅ Detailed architectural overview
+- **[Component Reference](05_Component_Reference.md)** - ✅ All components explained
 - **[System Wiki](06_System_Wiki.md)** - ✅ Comprehensive system overview and component interactions
-- **[Data Flow Diagrams](07_Data_Flow_Diagrams.md)** - How data moves through the system
-
-### 🔧 Core Components
-- **[AI Server](07_AI_Server.md)** - The heart of the trading system
-- **[System Orchestrator](08_System_Orchestrator.md)** - Component management and monitoring
-- **[Model System](09_Model_System.md)** - Machine learning models and registry
-
-### 🤖 AI & Machine Learning
-- **[Machine Learning Guide](10_Machine_Learning_Guide.md)** - ML algorithms and models
-- **[Ensemble Models](11_Ensemble_Models.md)** - Advanced ensemble techniques
-- **[Adaptive Learning](12_Adaptive_Learning.md)** - Continuous improvement system
-- **[Market Regime Detection](13_Market_Regime_Detection.md)** - Market condition analysis
 
 ### 📊 Analytics & Monitoring
-- **[Performance Dashboard](14_Performance_Dashboard.md)** - Real-time monitoring
-- **[Trade Logger](15_Trade_Logger.md)** - Trade tracking and analysis
-- **[Risk Management](16_Risk_Management.md)** - Risk analysis and optimization
+- **[Performance Dashboard](14_Performance_Dashboard.md)** - ✅ Real-time monitoring
+- **[Risk Management](16_Risk_Management.md)** - ✅ Risk analysis and optimization
 - **[Backtesting System](17_Backtesting_System.md)** - ✅ Historical testing framework
 
 ### 🔄 Data & Integration
-- **[Data Management](18_Data_Management.md)** - Data processing and storage
-- **[API Reference](19_API_Reference.md)** - Complete API documentation
 - **[Integration Guide](20_Integration_Guide.md)** - ✅ External system integration
-- **[Data Flow & AI Signals](DATA_FLOW_AI_SIGNALS.md)** - 🔄 **Signal processing workflow**
-- **[Technical Architecture](TECHNICAL_ARCHITECTURE_MQ5_AI_INTEGRATION.md)** - 🏗️ **MQ5-AI integration details**
+- **[Data Flow & AI Signals](DATA_FLOW_AI_SIGNALS.md)** - ✅ **Signal processing workflow**
+- **[Technical Architecture](TECHNICAL_ARCHITECTURE_MQ5_AI_INTEGRATION.md)** - ✅ **MQ5-AI integration details**
 
 ### ⚙️ Configuration & Deployment
-- **[Configuration Guide](21_Configuration_Guide.md)** - All configuration options
-- **[Deployment Strategies](22_Deployment_Strategies.md)** - Local vs VPS deployment
+- **[Configuration Guide](21_Configuration_Guide.md)** - ✅ All configuration options
 - **[Production Setup](23_Production_Setup.md)** - ✅ Production deployment guide
-- **[XAUUSD Optimization Guide](XAUUSD_OPTIMIZATION_GUIDE.md)** - 🏆 **Gold trading optimizations and features**
-
-### 🔧 Maintenance & Troubleshooting
-- **[Maintenance Guide](24_Maintenance_Guide.md)** - System maintenance procedures
-- **[Troubleshooting](25_Troubleshooting.md)** - Common issues and solutions
-- **[Performance Optimization](26_Performance_Optimization.md)** - System optimization
+- **[XAUUSD Optimization Guide](XAUUSD_OPTIMIZATION_GUIDE.md)** - ✅ **Gold trading optimizations and features**
 
 ### 📋 Reference Materials
-- **[Technical Specifications](27_Technical_Specifications.md)** - Detailed technical specs
-- **[Database Schema](28_Database_Schema.md)** - Database structure and relationships
-- **[File Structure Reference](29_File_Structure_Reference.md)** - Complete file organization
-
-### 🎓 Advanced Topics
-- **[Advanced Features](30_Advanced_Features.md)** - Power user features
-- **[Custom Development](31_Custom_Development.md)** - Extending the system
-- **[Research Tools](32_Research_Tools.md)** - Research and development tools
+- **[EA Configuration Reference](EA_CONFIG_REFERENCE.md)** - ✅ Expert Advisor setup guide
+- **[Installation Guide](INSTALLATION_GUIDE.md)** - ✅ Complete installation instructions
+- **[GPU Deployment Strategy](GPU_DEPLOYMENT_STRATEGY.md)** - ✅ GPU-accelerated deployment
+- **[Laptop Deployment Strategy](LAPTOP_DEPLOYMENT_STRATEGY.md)** - ✅ Local development setup
 
 ## 🎯 Quick Navigation
 
@@ -76,29 +51,28 @@ This comprehensive documentation library provides everything you need to underst
 ### For Developers
 1. Study [System Architecture](04_System_Architecture.md)
 2. Review [Component Reference](05_Component_Reference.md)
-3. Explore [API Reference](19_API_Reference.md)
-4. Check [Custom Development](31_Custom_Development.md)
+3. Explore [Technical Architecture](TECHNICAL_ARCHITECTURE_MQ5_AI_INTEGRATION.md)
+4. Check [Data Flow & AI Signals](DATA_FLOW_AI_SIGNALS.md)
 
 ### For Traders
 1. Read [Quick Start Guide](01_Quick_Start_Guide.md)
 2. Study [Performance Dashboard](14_Performance_Dashboard.md)
 3. Learn [Risk Management](16_Risk_Management.md)
-4. Explore [Backtesting System](17_Backtesting_System.md)
+4. Explore [XAUUSD Optimization Guide](XAUUSD_OPTIMIZATION_GUIDE.md)
 
 ### For System Administrators
 1. Follow [Production Setup](23_Production_Setup.md)
-2. Study [Deployment Strategies](22_Deployment_Strategies.md)
-3. Review [Maintenance Guide](24_Maintenance_Guide.md)
-4. Learn [Performance Optimization](26_Performance_Optimization.md)
+2. Study [GPU Deployment Strategy](GPU_DEPLOYMENT_STRATEGY.md)
+3. Review [Laptop Deployment Strategy](LAPTOP_DEPLOYMENT_STRATEGY.md)
+4. Learn [EA Configuration Reference](EA_CONFIG_REFERENCE.md)
 
 ## 🔍 Search Guide
 
-- **Configuration**: See sections 21-23
-- **Troubleshooting**: Section 25 + component-specific guides  
-- **API Details**: Section 19 + individual component guides
-- **Machine Learning**: Sections 10-13
-- **Data Processing**: Section 18 + component guides
-- **Performance**: Sections 14, 26 + monitoring guides
+- **Configuration**: Configuration Guide, Production Setup, XAUUSD Optimization
+- **XAUUSD Trading**: XAUUSD Optimization Guide, EA Configuration Reference
+- **Technical Details**: Technical Architecture, Data Flow & AI Signals
+- **Installation**: Installation Guide, GPU/Laptop Deployment Strategies
+- **Performance**: Performance Dashboard, Risk Management, Backtesting
 
 ## 📝 Documentation Standards
 
@@ -118,7 +92,7 @@ This comprehensive documentation library provides everything you need to underst
 
 ## 📅 Last Updated
 
-This documentation was last updated: 2025-07-26
+This documentation was last updated: 2025-07-27
 
 ---
 

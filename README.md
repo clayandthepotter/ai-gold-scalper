@@ -81,6 +81,9 @@ python core/system_orchestrator_enhanced.py status
 | Topic | Link |
 |-------|------|
 | **Quick Start** | [documentation/01_Quick_Start_Guide.md](documentation/01_Quick_Start_Guide.md) |
+| **XAUUSD Optimization** | [documentation/XAUUSD_OPTIMIZATION_GUIDE.md](documentation/XAUUSD_OPTIMIZATION_GUIDE.md) |
+| **Technical Architecture** | [documentation/TECHNICAL_ARCHITECTURE_MQ5_AI_INTEGRATION.md](documentation/TECHNICAL_ARCHITECTURE_MQ5_AI_INTEGRATION.md) |
+| **Data Flow & AI Signals** | [documentation/DATA_FLOW_AI_SIGNALS.md](documentation/DATA_FLOW_AI_SIGNALS.md) |
 | **Installation** | [documentation/03_Installation_Guide.md](documentation/03_Installation_Guide.md) |
 | **System Architecture** | [documentation/04_System_Architecture.md](documentation/04_System_Architecture.md) |
 | **Production Setup** | [documentation/23_Production_Setup.md](documentation/23_Production_Setup.md) |

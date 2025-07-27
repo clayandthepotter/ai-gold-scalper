@@ -15,11 +15,13 @@ This directory contains all the necessary files for the AI Gold Scalper Expert A
 
 ### Supporting Modules (server directory)
 - **enhanced_logging.mq5** - Advanced logging functionality
-- **ml_integration.mq5** - Machine learning integration
-- **performance_analytics.mq5** - Performance tracking and analytics
-- **risk_management_enhanced.mq5** - Enhanced risk management
+- **ml_integration.mq5** - Machine learning integration and feature engineering
+- **performance_analytics.mq5** - Performance tracking and advanced metrics
+- **risk_management_enhanced.mq5** - Enhanced risk management and position sizing
 - **telegram_alerts_addon.mq5** - Telegram notification system
 - **trade_journal_addon.mq5** - Trade journaling functionality
+- **adaptive_learning_engine.mq5** - Continuous strategy optimization
+- **postmortem_analysis.mq5** - Trade failure analysis and improvement
 
 ## Quick Installation
 
@@ -56,7 +58,7 @@ After copying the files, you must configure MetaTrader 5:
 1. **Start the AI Server**:
    ```bash
    cd "G:\My Drive\AI_Gold_Scalper"
-   python core/consolidated_ai_server.py
+   python core/enhanced_ai_server_consolidated.py
    ```
 
 2. **Attach EA to Chart**:
