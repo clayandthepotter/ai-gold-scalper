@@ -46,6 +46,7 @@ This comprehensive documentation library provides everything you need to underst
 - **[Configuration Guide](21_Configuration_Guide.md)** - All configuration options
 - **[Deployment Strategies](22_Deployment_Strategies.md)** - Local vs VPS deployment
 - **[Production Setup](23_Production_Setup.md)** - ✅ Production deployment guide
+- **[XAUUSD Optimization Guide](XAUUSD_OPTIMIZATION_GUIDE.md)** - 🏆 **Gold trading optimizations and features**
 
 ### 🔧 Maintenance & Troubleshooting
 - **[Maintenance Guide](24_Maintenance_Guide.md)** - System maintenance procedures

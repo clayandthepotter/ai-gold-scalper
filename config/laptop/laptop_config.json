@@ -1,0 +1,28 @@
+{
+  "hardware": {
+    "gpu": "RTX 4050",
+    "gpu_memory_gb": 6,
+    "cpu": "AMD Ryzen 5 8654HS",
+    "cpu_cores": 6,
+    "cpu_threads": 12,
+    "ram_gb": 15
+  },
+  "tensorflow": {
+    "gpu_memory_limit_mb": 5120,
+    "mixed_precision": true,
+    "xla_acceleration": true,
+    "inter_op_threads": 6,
+    "intra_op_threads": 12
+  },
+  "trading": {
+    "max_concurrent_models": 3,
+    "max_concurrent_requests": 2,
+    "ai_request_timeout_ms": 10000,
+    "memory_conservation": true
+  },
+  "schedule": {
+    "model_training": "22:00",
+    "system_backup": "02:00",
+    "system_cleanup": "03:00"
+  }
+}

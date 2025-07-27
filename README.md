@@ -53,15 +53,26 @@ python core/system_orchestrator_enhanced.py status
 
 ---
 
-## 🎯 Key Features
+## 🏆 XAUUSD Gold Trading Optimizations
 
-- **Advanced AI Engine** with GPT-4 integration
-- **Ensemble Machine Learning** with 9+ algorithms
-- **Market Regime Detection** for adaptive strategies
-- **Real-time Performance Dashboard** 
-- **Comprehensive Backtesting Framework**
-- **Professional Risk Management**
-- **Enterprise-Grade Architecture**
+**This system is specifically optimized for XAUUSD (Gold/USD) trading:**
+
+- **🎯 Auto-Detection**: Automatically applies gold-optimized settings (spread: 30pts, SL: 150pts, TP: 500pts)
+- **📈 Volatility-Tuned**: RSI, MACD, Bollinger Bands calibrated for gold's unique price action
+- **⏰ Session Awareness**: Trading hours optimized for gold's most active market periods
+- **📰 News Impact**: Gold-specific economic event analysis and market driver consideration
+- **🧠 AI Context**: GPT-4 prompts specifically trained for XAUUSD market analysis
+- **🔄 Multi-Asset Support**: Also supports major forex pairs, crosses, and indices with auto-adjustment
+
+## 🎯 Core Features
+
+- **Advanced AI Engine** with GPT-4 integration (gold-optimized prompts)
+- **Ensemble Machine Learning** with 9+ algorithms trained on XAUUSD data
+- **Market Regime Detection** for adaptive gold trading strategies
+- **Real-time Performance Dashboard** with gold-specific metrics
+- **Comprehensive Backtesting Framework** using historical XAUUSD data
+- **Professional Risk Management** calibrated for gold volatility
+- **Enterprise-Grade Architecture** with production WSGI server
 
 ---
 
