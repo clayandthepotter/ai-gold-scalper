@@ -131,6 +131,19 @@ graph TD
     N --> O[Adaptive Learning]
     O --> D
 ```
+- A.) **MT5 (Market Data)** → B.) **Market Data Processor** ↓
+    - → C.) **Feature Engineering** → D.) **ML Models** ↓ 
+    - → C.) **Feature Engineering** → E.) **Technical Analysis** ↓
+    - → C.) **Feature Engineering** → F.) **Market Data Processor** ↓
+- G.) **Signal Fusion** ↓
+- H.) **Risk Management** ↓
+- I.) **Position Sizing** ↓
+- J.) **Trading Signal** ↓
+- K.) **MT5 EA** ↓
+- L.) **Trade Execution** ↓
+- M.) **Trade Logger** ↓
+- N.) **Performance Analysis** ↓
+- O.) **Adaptive Learning** → D.) **ML Models** → G.) **Signal Fusion**
 
 ## 🎯 Key Features
 
