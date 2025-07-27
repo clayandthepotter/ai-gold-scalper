@@ -41,6 +41,8 @@ This comprehensive documentation library provides everything you need to underst
 - **[Data Management](18_Data_Management.md)** - Data processing and storage
 - **[API Reference](19_API_Reference.md)** - Complete API documentation
 - **[Integration Guide](20_Integration_Guide.md)** - ✅ External system integration
+- **[Data Flow & AI Signals](DATA_FLOW_AI_SIGNALS.md)** - 🔄 **Signal processing workflow**
+- **[Technical Architecture](TECHNICAL_ARCHITECTURE_MQ5_AI_INTEGRATION.md)** - 🏗️ **MQ5-AI integration details**
 
 ### ⚙️ Configuration & Deployment
 - **[Configuration Guide](21_Configuration_Guide.md)** - All configuration options
