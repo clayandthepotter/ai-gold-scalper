@@ -32,8 +32,8 @@ import sys
 sys.path.append('scripts')
 from data.market_data_processor import MarketDataProcessor
 from training.automated_model_trainer import AutomatedModelTrainer
-from models.model_registry import ModelRegistry
-from phase4.phase4_controller import Phase4Controller
+from ai.model_registry import ModelRegistry
+from integration.phase4_integration import Phase4Integration
 
 class TradingDashboard:
     """Production trading dashboard application"""
@@ -55,7 +55,7 @@ class TradingDashboard:
         self.market_processor = None
         self.model_trainer = None
         self.model_registry = ModelRegistry()
-        self.phase4_controller = None
+        self.phase4_integration = None
         
         # Data paths
         self.market_db = Path("data/market_data.db")
@@ -241,10 +241,10 @@ class TradingDashboard:
         db_health = self._check_database_health()
         health['components']['database'] = db_health
         
-        # Phase 4 controller health
-        if self.phase4_controller:
+        # Phase 4 integration health
+        if self.phase4_integration:
             try:
-                phase4_status = self.phase4_controller.get_system_status()
+                phase4_status = self.phase4_integration.get_system_status()
                 health['components']['phase4_ai'] = {
                     'status': 'operational' if phase4_status.get('system_operational', False) else 'degraded',
                     'ensemble_models': len(phase4_status.get('ensemble_models', [])),
@@ -728,8 +728,8 @@ class TradingDashboard:
             # Initialize model trainer
             self.model_trainer = AutomatedModelTrainer()
             
-            # Initialize Phase 4 controller
-            self.phase4_controller = Phase4Controller()
+            # Initialize Phase 4 integration
+            self.phase4_integration = Phase4Integration()
             
             logging.info("Dashboard components initialized successfully")
             return True
